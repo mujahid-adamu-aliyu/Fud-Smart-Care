@@ -953,7 +953,6 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 const CREATE_STAFF_FUNCTION_URL = SUPABASE_URL + '/functions/v1/create-staff-user'
-const DELETE_USER_FUNCTION_URL = SUPABASE_URL + '/functions/v1/delete-user'
 let currentUser = null, currentAdminId = null
 
 const NAV_ITEMS = [
@@ -1562,10 +1561,9 @@ async function loadDoctors(){
     body: acField('Licence', r.licence_number ? escHtml(r.licence_number) : emptyIcon())
         + acField('Email', r.email ? escHtml(r.email) : emptyIcon())
         + acField('Phone', r.phone ? escHtml(r.phone) : emptyIcon())
-        + `<div class="ac-actions"><button class="${r.is_active?'btn-danger':'btn-secondary'} btn-sm" data-doc="${r.id}" data-new="${!r.is_active}">${r.is_active?'Deactivate':'Reactivate'}</button><button class="btn-danger btn-sm" data-doc-delete="${r.id}" data-email="${escHtml(r.email)}" title="Permanently delete"><i class="ph-bold ph-trash"></i></button></div>`
+        + `<div class="ac-actions"><button class="${r.is_active?'btn-danger':'btn-secondary'} btn-sm" data-doc="${r.id}" data-new="${!r.is_active}">${r.is_active?'Deactivate':'Reactivate'}</button><button class="btn-danger btn-sm" type="button" disabled aria-label="Permanent deletion unavailable" title="Permanent deletion is disabled; deactivate this doctor instead" style="opacity:.4;cursor:not-allowed"><i class="ph-bold ph-trash" aria-hidden="true"></i></button></div>`
   })), doctorsFilter==='all' ? 'No doctors yet.' : `No ${doctorsFilter} doctors.`)
   el.querySelectorAll('button[data-doc]').forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); toggleDoctorActive(b.dataset.doc, b.dataset.new==='true', e.currentTarget) }))
-  el.querySelectorAll('button[data-doc-delete]').forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); openHardDeleteStaff('doctor', b.dataset.docDelete, b.dataset.email) }))
 }
 async function toggleDoctorActive(doctorId, newStatus, btnEl){
   if (!newStatus){
@@ -1599,10 +1597,9 @@ async function loadPharmacists(){
     body: acField('Licence', r.licence_number ? escHtml(r.licence_number) : emptyIcon())
         + acField('Email', r.email ? escHtml(r.email) : emptyIcon())
         + acField('Phone', r.phone ? escHtml(r.phone) : emptyIcon())
-        + `<div class="ac-actions"><button class="${r.is_active?'btn-danger':'btn-secondary'} btn-sm" data-ph="${r.id}" data-new="${!r.is_active}">${r.is_active?'Deactivate':'Reactivate'}</button><button class="btn-danger btn-sm" data-ph-delete="${r.id}" data-email="${escHtml(r.email)}" title="Permanently delete"><i class="ph-bold ph-trash"></i></button></div>`
+        + `<div class="ac-actions"><button class="${r.is_active?'btn-danger':'btn-secondary'} btn-sm" data-ph="${r.id}" data-new="${!r.is_active}">${r.is_active?'Deactivate':'Reactivate'}</button><button class="btn-danger btn-sm" type="button" disabled aria-label="Permanent deletion unavailable" title="Permanent deletion is disabled; deactivate this pharmacist instead" style="opacity:.4;cursor:not-allowed"><i class="ph-bold ph-trash" aria-hidden="true"></i></button></div>`
   })), pharmacistsFilter==='all' ? 'No pharmacists yet.' : `No ${pharmacistsFilter} pharmacists.`)
   el.querySelectorAll('button[data-ph]').forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); togglePharmacistActive(b.dataset.ph, b.dataset.new==='true', e.currentTarget) }))
-  el.querySelectorAll('button[data-ph-delete]').forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); openHardDeleteStaff('pharmacist', b.dataset.phDelete, b.dataset.email) }))
 }
 async function togglePharmacistActive(pharmId, newStatus, btnEl){
   if (!newStatus){
@@ -1614,77 +1611,6 @@ async function togglePharmacistActive(pharmId, newStatus, btnEl){
   if (error){ showToast('error','Error updating pharmacist: '+error.message); if (btnEl) btnEl.disabled = false; return }
   showToast('success', newStatus?'Pharmacist reactivated':'Pharmacist deactivated')
   loadPharmacists(); loadOverview()
-}
-
-/* =============== HARD DELETE STAFF (requires typing exact email) =============== */
-function openHardDeleteStaff(role, staffId, staffEmail){
-  const table = role === 'doctor' ? 'doctors' : 'pharmacists'
-  const label = role === 'doctor' ? 'Doctor' : 'Pharmacist'
-  const bd = document.createElement('div')
-  bd.className = 'modal-backdrop'
-  bd.innerHTML = `<div class="modal-card no-sheet">
-    <div class="modal-title">Permanently Delete ${label}</div>
-    <div class="modal-msg">${role==='doctor' ? 'This will permanently erase this doctor\'s profile <strong>and</strong> every appointment, prescription, and payment record tied to them — past, completed, cancelled, or otherwise.' : 'This will permanently erase this pharmacist\'s account.'} This action <strong>cannot be undone</strong>.</div>
-    <div class="form-field" style="margin-top:10px"><label class="form-label">Type the ${role}'s email to confirm</label>
-      <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px">${escHtml(staffEmail)}</div>
-      <input class="form-input" id="hardDeleteEmailInput" placeholder="Type email exactly to confirm" autocomplete="off">
-      <div class="field-error" id="hardDeleteEmailMismatch" style="display:none;margin-top:6px"><i class="ph ph-warning-circle"></i> Email doesn't match — please type it exactly.</div>
-    </div>
-    <div class="modal-actions" style="margin-top:20px">
-      <button class="btn-secondary" data-act="cancel">Cancel</button>
-      <button class="btn-danger btn" data-act="ok" style="padding:10px 20px;font-size:13px" disabled><i class="btn-icon ph-bold ph-trash"></i><span class="btn-text">Delete Permanently</span><span class="btn-dots"><span></span><span></span><span></span></span></button>
-    </div>
-  </div>`
-  document.body.appendChild(bd)
-  const close = () => bd.remove()
-  bd.addEventListener('click', e => { if (e.target === bd) close() })
-  bd.querySelector('[data-act="cancel"]').addEventListener('click', close)
-  const input = bd.querySelector('#hardDeleteEmailInput')
-  const mismatchMsg = bd.querySelector('#hardDeleteEmailMismatch')
-  const okBtn = bd.querySelector('[data-act="ok"]')
-  input.addEventListener('input', () => {
-    const matches = input.value === staffEmail
-    okBtn.disabled = !matches
-    mismatchMsg.style.display = (input.value.length > 0 && !matches) ? 'flex' : 'none'
-  })
-  okBtn.addEventListener('click', async () => {
-    if (input.value !== staffEmail) return
-    setBtnLoading(okBtn, true)
-
-    // Deleting straight from the doctors/pharmacists table only ever removed the
-    // profile row — the real login lives in auth.users, so that account (and its
-    // email) would stick around and block re-creation. We now call the delete-user
-    // edge function, which uses the service-role key to delete the auth.users row;
-    // the on-delete-cascade FKs then take the doctors/pharmacists row (and every
-    // downstream record) with it automatically.
-    try {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session || !session.access_token){
-        showToast('error', 'No valid session. Please log out and back in.')
-        setBtnLoading(okBtn, false)
-        return
-      }
-      const resp = await fetch(DELETE_USER_FUNCTION_URL, {
-        method:'POST',
-        headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer '+session.access_token },
-        body: JSON.stringify({ user_id: staffId })
-      })
-      const body = await resp.json()
-      if (!resp.ok || body.error){
-        handleErr(new Error(body.error || `Could not delete ${role}.`), `Error deleting ${role}.`)
-        setBtnLoading(okBtn, false)
-        return
-      }
-    } catch (err){
-      handleErr(err, `Error deleting ${role}.`)
-      setBtnLoading(okBtn, false)
-      return
-    }
-    close()
-    showToast('success', `${label} permanently deleted.`)
-    if (role === 'doctor'){ loadDoctors(); loadRosterDoctorSelect() } else { loadPharmacists() }
-    loadOverview()
-  })
 }
 
 /* =============== ADD STAFF MODAL =============== */
