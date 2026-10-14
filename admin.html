@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>FUD SmartCare — Admin Dashboard</title>
+<title>ATBU MediCare — Admin Dashboard</title>
 <script>
   (function(){
     try {
-      var t = localStorage.getItem('fud-theme') || 'light';
+      var t = localStorage.getItem('atbu-theme') || 'light';
       document.documentElement.setAttribute('data-theme', t);
     } catch(e) {}
   })();
@@ -19,34 +19,34 @@
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.2"></script>
 <style>
 :root{
-  --primary:#1A5C2A; --primary-mid:#217A38; --primary-light:#3DA854;
-  --accent-green:#1A5C2A; --accent-gold:#3DA854;
-  --bg:#F2F7F2; --panel-bg:#FFFFFF; --neu-bg:#FFFFFF;
+  --primary:#1E7FB8; --primary-mid:#2C97D6; --primary-light:#5CB8E4;
+  --accent-green:#1E8449; --accent-gold:#F4C430;
+  --bg:#F0F9FD; --panel-bg:#FFFFFF; --neu-bg:#FFFFFF;
   --neu-shadow-d:#c9e4f0; --neu-shadow-l:#ffffff;
   --text:#0F172A; --text-muted:#64748B;
   --input-bg:#FFFFFF; --input-border:#CBD5E1; --input-bg-err:#FEF2F2;
   --card-border:rgba(255,255,255,0.80); --card-border-solid:#CBD5E1;
   --success:#1E8449; --error:#EF4444; --warning:#F59E0B; --info:#2563EB; --white:#FFFFFF;
-  --shadow-rgb:26,92,42;
+  --shadow-rgb:30,127,184;
   --radius-card:20px; --radius-input:12px; --radius-btn:10px;
-  --overlay-grad:linear-gradient(150deg,#5DC872 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#3DA854 0%,#217A38 55%,#1A5C2A 100%);
+  --overlay-grad:linear-gradient(150deg,#2C97D6 0%,#1E7FB8 100%);
+  --brand-grad:linear-gradient(135deg,#2C97D6 0%,#1E7FB8 100%);
   --content-max:1200px;
-  --med-icon:rgba(26,92,42,0.10);
+  --med-icon:rgba(30,127,184,0.10);
 }
 [data-theme="dark"]{
-  --primary:#3DA854; --primary-mid:#217A38; --primary-light:#5FC977;
-  --accent-green:#2FA05E; --accent-gold:#3DA854;
-  --bg:#0D1F10; --panel-bg:#112916; --neu-bg:#12242E;
-  --neu-shadow-d:#070F08; --neu-shadow-l:#1A3D1F;
-  --text:#E8F5EA; --text-muted:#82A889;
-  --input-bg:#102530; --input-border:#1E4025; --input-bg-err:#2A1018;
-  --card-border:rgba(93,201,119,0.22); --card-border-solid:#1E4025;
+  --primary:#5CB8E4; --primary-mid:#2C97D6; --primary-light:#8ECFEE;
+  --accent-green:#2FA05E; --accent-gold:#F4C430;
+  --bg:#0E1A22; --panel-bg:#142833; --neu-bg:#12242E;
+  --neu-shadow-d:#081117; --neu-shadow-l:#1E3A48;
+  --text:#EAF6FB; --text-muted:#8FB3C3;
+  --input-bg:#102530; --input-border:#28455A; --input-bg-err:#2A1018;
+  --card-border:rgba(92,184,228,0.22); --card-border-solid:#22364A;
   --success:#2FA05E; --error:#F87171; --warning:#FBBF24; --info:#60A5FA; --white:#EAF6FB;
-  --shadow-rgb:26,92,42;
-  --overlay-grad:linear-gradient(150deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --med-icon:rgba(26,92,42,0.14);
+  --shadow-rgb:92,184,228;
+  --overlay-grad:linear-gradient(150deg,#5CB8E4 0%,#1E7FB8 100%);
+  --brand-grad:linear-gradient(135deg,#5CB8E4 0%,#1E7FB8 100%);
+  --med-icon:rgba(92,184,228,0.14);
   --stat-amber:#FBBF24; --stat-blue:#60A5FA;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-user-select:none;user-select:none}
@@ -55,7 +55,7 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 html,body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;min-height:100vh;transition:background 250ms ease,color 250ms ease}
 body{overflow-x:hidden;overscroll-behavior-y:none}
 .blob{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
-.blob1{width:500px;height:500px;background:rgba(26,92,42,0.12);top:-150px;left:-150px;animation:blobDrift1 22s ease-in-out infinite alternate}
+.blob1{width:500px;height:500px;background:rgba(16,185,129,0.12);top:-150px;left:-150px;animation:blobDrift1 22s ease-in-out infinite alternate}
 .blob2{width:420px;height:420px;background:rgba(var(--shadow-rgb),0.10);bottom:-120px;right:-120px;filter:blur(80px);animation:blobDrift2 18s ease-in-out infinite alternate}
 @keyframes blobDrift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(120px,80px) scale(1.15)}}
 @keyframes blobDrift2{0%{transform:translate(0,0) scale(1.1)}100%{transform:translate(-100px,-60px) scale(1)}}
@@ -746,7 +746,7 @@ td.cell-date{font-weight:700;font-style:italic;color:var(--text);letter-spacing:
 <div class="med-bg" id="medBg"></div>
 
 <div id="authScreen">
-  <div class="auth-logo-pulse" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;overflow:hidden"><img src="logo.png" alt="FUD SmartCare" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div class="auth-logo-pulse" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;overflow:hidden"><img src="logo.png" alt="ATBU MediCare" style="width:100%;height:100%;object-fit:cover;display:block"></div>
   <div>Verifying session…</div>
 </div>
 
@@ -755,9 +755,9 @@ td.cell-date{font-weight:700;font-style:italic;color:var(--text);letter-spacing:
     <div class="topbar-shell">
       <header class="topbar">
         <div class="brand">
-          <div class="brand-icon"><img src="logo.png" alt="FUD SmartCare"></div>
+          <div class="brand-icon"><img src="logo.png" alt="ATBU MediCare"></div>
           <div>
-            <div class="brand-name">FUD SmartCare</div>
+            <div class="brand-name">ATBU MediCare</div>
           </div>
         </div>
         <div class="top-right">
@@ -786,10 +786,10 @@ td.cell-date{font-weight:700;font-style:italic;color:var(--text);letter-spacing:
       <nav class="island-nav-list" id="islandNavList"></nav>
       <div class="island-divider"></div>
       <div class="island-footer" id="islandFooter" tabindex="0">
-        <div class="island-footer-glyph" style="width:36px;height:36px;border-radius:10px;font-size:13px;font-weight:900;letter-spacing:-0.03em;">G14</div>
+        <div class="island-footer-glyph"><i class="ph-fill ph-users-three"></i></div>
         <div class="island-footer-lines island-label">
-          <div>Group 14</div>
-          <div>FUD SmartCare</div>
+          <div>Team Tech Fusion</div>
+          <div>ATBU</div>
         </div>
       </div>
     </aside>
@@ -798,7 +798,7 @@ td.cell-date{font-weight:700;font-style:italic;color:var(--text);letter-spacing:
     <aside class="drawer" id="drawer">
       <div class="drawer-head">
         <div class="brand">
-          <div class="brand-icon"><img src="logo.png" alt="FUD SmartCare"></div>
+          <div class="brand-icon"><img src="logo.png" alt="ATBU MediCare"></div>
           <div><span class="drawer-title">Navigation</span></div>
         </div>
         <button class="icon-btn" id="drawerClose" aria-label="Close menu"><i class="ph ph-x"></i></button>
@@ -1309,7 +1309,7 @@ function showInfoModal(title, htmlBody){
 
 /* =============== THEME =============== */
 function applyThemeIcon(){ const t = document.documentElement.getAttribute('data-theme'); const ic = document.getElementById('themeIcon'); if (ic) ic.className = t === 'dark' ? 'ph ph-sun' : 'ph ph-moon' }
-function toggleTheme(){ const cur = document.documentElement.getAttribute('data-theme') || 'light'; const nxt = cur === 'light' ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', nxt); try { localStorage.setItem('fud-theme', nxt) } catch(e){}; applyThemeIcon() }
+function toggleTheme(){ const cur = document.documentElement.getAttribute('data-theme') || 'light'; const nxt = cur === 'light' ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', nxt); try { localStorage.setItem('atbu-theme', nxt) } catch(e){}; applyThemeIcon() }
 
 /* =============== DRAWER =============== */
 function openDrawer(){ document.getElementById('drawer').classList.add('open'); document.getElementById('drawerBackdrop').classList.add('open'); document.body.style.overflow = 'hidden' }
@@ -1386,7 +1386,7 @@ function switchTab(tabName){
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'page-'+tabName))
   closeDrawer()
   window.scrollTo({ top:0, behavior:'smooth' })
-  try { localStorage.setItem('fud-admin-tab', tabName) } catch(e){}
+  try { localStorage.setItem('atbu-admin-tab', tabName) } catch(e){}
   if (tabName === 'patients'){ document.getElementById('patientSearchInput').value = ''; searchPatients('') }
 }
 
@@ -1423,7 +1423,7 @@ async function refreshWithOverlay(containerId, loadFn, sectionLabel){
 async function init(){
   renderNav()
   try {
-    const savedTab = localStorage.getItem('fud-admin-tab')
+    const savedTab = localStorage.getItem('atbu-admin-tab')
     if (savedTab && document.getElementById('page-'+savedTab)) switchTab(savedTab)
   } catch(e){}
   initMedBg()
@@ -1538,7 +1538,7 @@ async function loadOverview(){
 /* =============== DOCTORS =============== */
 // A doctor whose profile was scrubbed (permanently removed while keeping history intact)
 // is identified by our placeholder email pattern, since email is NOT NULL in the schema.
-function isDeletedDoctor(doc){ return typeof doc.email === 'string' && doc.email.startsWith('deleted+') && doc.email.endsWith('@fud.invalid') }
+function isDeletedDoctor(doc){ return typeof doc.email === 'string' && doc.email.startsWith('deleted+') && doc.email.endsWith('@atbu.invalid') }
 
 let paymentStatusFilter = 'pending_verification' // '' (all) | 'unpaid' | 'pending_verification' | 'paid'
 let apptStatusFilter = '' // '' (all) | 'pending' | 'approved' | 'completed' | 'missed' | 'cancelled'
@@ -1702,7 +1702,7 @@ function openStaffModal(role){
       <div class="form-grid">
         <div class="form-field"><label class="form-label">Full Name</label><input class="form-input" name="full_name" placeholder="e.g. ${role==='doctor'?'Dr. Jane Doe':'Musa Bello'}" required><div class="field-error" data-err="full_name"><i class="ph ph-warning-circle"></i> Please enter the full name.</div></div>
         <div class="form-field"><label class="form-label">Licence Number</label><input class="form-input" name="licence_number" placeholder="${licPh}" required><div class="field-error" data-err="licence_number"><i class="ph ph-warning-circle"></i> Format must be like ${licPh} and must not already be in use.</div></div>
-        <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="name@fud.edu.ng" required><div class="field-error" data-err="email"><i class="ph ph-warning-circle"></i> Email must be a valid, unused @fud.edu.ng address.</div></div>
+        <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="name@atbu.edu.ng" required><div class="field-error" data-err="email"><i class="ph ph-warning-circle"></i> Email must be a valid, unused @atbu.edu.ng address.</div></div>
         <div class="form-field"><label class="form-label">Phone</label><input class="form-input" type="tel" name="phone" placeholder="+234…" required><div class="field-error" data-err="phone"><i class="ph ph-warning-circle"></i> Please enter a phone number.</div></div>
       </div>
       <div id="staffFormMsg" style="margin-top:14px;font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:6px"></div>
@@ -1733,7 +1733,7 @@ function openStaffModal(role){
       if (!full_name) missing.push('full_name')
       const licPattern = new RegExp('^' + licPrefix + '-\\d{3,}$')
       if (!licence_number || !licPattern.test(licence_number)) missing.push('licence_number')
-      if (!email || !/^[^@\s]+@fud\.edu\.ng$/i.test(email)) missing.push('email')
+      if (!email || !/^[^@\s]+@atbu\.edu\.ng$/i.test(email)) missing.push('email')
       if (!phone) missing.push('phone')
       if (missing.length){
         missing.forEach(n => {
@@ -2252,7 +2252,7 @@ async function shareStaffCard({ role, label, full_name, email, phone, pwLine }){
   // Title bar
   ctx.fillStyle = '#1E7FB8'
   ctx.font = '700 26px Poppins, sans-serif'
-  ctx.fillText('FUD SmartCare', cx+32, cy+50)
+  ctx.fillText('ATBU MediCare', cx+32, cy+50)
   ctx.fillStyle = '#64748B'
   ctx.font = '600 14px Poppins, sans-serif'
   ctx.fillText(`${label} account was created with details:`, cx+32, cy+82)
@@ -2270,7 +2270,7 @@ async function shareStaffCard({ role, label, full_name, email, phone, pwLine }){
     y += 42
   })
   ctx.fillStyle = '#94A3B8'; ctx.font = '500 12px Poppins, sans-serif'
-  ctx.fillText('Generated by FUD SmartCare Admin', cx+32, cy+ch-24)
+  ctx.fillText('Generated by ATBU MediCare Admin', cx+32, cy+ch-24)
   const filename = `${label}-${full_name.replace(/\s+/g,'_')}-account.png`
   canvas.toBlob(async (blob) => {
     if (!blob){ showToast('error','Could not generate image.'); return }

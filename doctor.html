@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>FUD SmartCare — Doctor Dashboard</title>
+<title>ATBU MediCare — Doctor Dashboard</title>
 <script>
   (function(){
     try {
-      var t = localStorage.getItem('fud-theme') || 'light';
+      var t = localStorage.getItem('atbu-theme') || 'light';
       document.documentElement.setAttribute('data-theme', t);
     } catch(e) {}
   })();
@@ -20,34 +20,34 @@
 <style>
 
 :root{
-  --primary:#1A5C2A; --primary-mid:#217A38; --primary-light:#3DA854;
-  --accent-green:#1A5C2A; --accent-gold:#3DA854;
-  --bg:#F2F7F2; --panel-bg:#FFFFFF; --neu-bg:#FFFFFF;
+  --primary:#1E7FB8; --primary-mid:#2C97D6; --primary-light:#5CB8E4;
+  --accent-green:#1E8449; --accent-gold:#F4C430;
+  --bg:#F0F9FD; --panel-bg:#FFFFFF; --neu-bg:#FFFFFF;
   --neu-shadow-d:#c9e4f0; --neu-shadow-l:#ffffff;
   --text:#0F172A; --text-muted:#64748B;
   --input-bg:#FFFFFF; --input-border:#CBD5E1; --input-bg-err:#FEF2F2;
   --card-border:rgba(255,255,255,0.80); --card-border-solid:#CBD5E1;
   --success:#1E8449; --error:#EF4444; --warning:#F59E0B; --info:#2563EB; --white:#FFFFFF;
-  --shadow-rgb:26,92,42;
+  --shadow-rgb:30,127,184;
   --radius-card:20px; --radius-input:12px; --radius-btn:10px;
-  --overlay-grad:linear-gradient(150deg,#5DC872 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#3DA854 0%,#217A38 55%,#1A5C2A 100%);
+  --overlay-grad:linear-gradient(150deg,#2C97D6 0%,#1E7FB8 100%);
+  --brand-grad:linear-gradient(135deg,#2C97D6 0%,#1E7FB8 100%);
   --content-max:1200px;
-  --med-icon:rgba(26,92,42,0.10);
+  --med-icon:rgba(30,127,184,0.10);
 }
 [data-theme="dark"]{
-  --primary:#3DA854; --primary-mid:#217A38; --primary-light:#5FC977;
-  --accent-green:#2FA05E; --accent-gold:#3DA854;
-  --bg:#0D1F10; --panel-bg:#112916; --neu-bg:#12242E;
-  --neu-shadow-d:#070F08; --neu-shadow-l:#1A3D1F;
-  --text:#E8F5EA; --text-muted:#82A889;
-  --input-bg:#102530; --input-border:#1E4025; --input-bg-err:#2A1018;
-  --card-border:rgba(93,201,119,0.22); --card-border-solid:#1E4025;
+  --primary:#5CB8E4; --primary-mid:#2C97D6; --primary-light:#8ECFEE;
+  --accent-green:#2FA05E; --accent-gold:#F4C430;
+  --bg:#0E1A22; --panel-bg:#142833; --neu-bg:#12242E;
+  --neu-shadow-d:#081117; --neu-shadow-l:#1E3A48;
+  --text:#EAF6FB; --text-muted:#8FB3C3;
+  --input-bg:#102530; --input-border:#28455A; --input-bg-err:#2A1018;
+  --card-border:rgba(92,184,228,0.22); --card-border-solid:#22364A;
   --success:#2FA05E; --error:#F87171; --warning:#FBBF24; --info:#60A5FA; --white:#EAF6FB;
-  --shadow-rgb:26,92,42;
-  --overlay-grad:linear-gradient(150deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --med-icon:rgba(26,92,42,0.14);
+  --shadow-rgb:92,184,228;
+  --overlay-grad:linear-gradient(150deg,#5CB8E4 0%,#1E7FB8 100%);
+  --brand-grad:linear-gradient(135deg,#5CB8E4 0%,#1E7FB8 100%);
+  --med-icon:rgba(92,184,228,0.14);
   --stat-amber:#FBBF24; --stat-blue:#60A5FA;
 
 }
@@ -968,8 +968,8 @@ td.cell-id{overflow-wrap:anywhere;word-break:break-word}
 <div class="med-bg" id="medBg"></div>
 
 <div id="authScreen">
-  <div class="auth-logo-pulse" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;overflow:hidden"><img src="logo.png" alt="FUD SmartCare" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-  <div>Verifying session…</div>
+  <div class="auth-logo-pulse" aria-hidden="true"><img src="logo.png" alt="" /></div>
+  <div class="auth-ring-label">Verifying session…</div>
 </div>
 <script>
 /* Auth/loading screen now uses a pulsing brand logo (see .auth-logo-pulse CSS).
@@ -982,7 +982,7 @@ window.__stopAuthAnim = function(){}
     <header class="topbar">
       <div class="brand">
         <div class="brand-icon"><img src="logo.png" alt="Logo"/></div>
-        <div class="brand-name">FUD SmartCare</div>
+        <div class="brand-name">ATBU MediCare</div>
       </div>
       <div class="top-right">
         <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i id="themeIcon" class="ph ph-moon"></i></button>
@@ -1013,7 +1013,7 @@ window.__stopAuthAnim = function(){}
       <div class="island-footer-glyph"><i class="ph-fill ph-users-three"></i></div>
       <div class="island-footer-lines island-label">
         <div>Team Tech Fusion</div>
-        <div>FUD</div>
+        <div>ATBU</div>
       </div>
     </div>
   </aside>
@@ -1022,8 +1022,8 @@ window.__stopAuthAnim = function(){}
   <aside class="drawer" id="drawer">
     <div class="drawer-head">
       <div class="brand" style="gap:10px">
-        <div class="brand-icon" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden"><img src="logo.png" alt="FUD SmartCare logo" style="width:100%;height:100%;object-fit:contain"/></div>
-        <div class="brand-name" style="font:700 15px 'Poppins',sans-serif;color:var(--text)">FUD SmartCare</div>
+        <div class="brand-icon" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden"><img src="logo.png" alt="ATBU MediCare logo" style="width:100%;height:100%;object-fit:contain"/></div>
+        <div class="brand-name" style="font:700 15px 'Poppins',sans-serif;color:var(--text)">ATBU MediCare</div>
       </div>
       <button class="icon-btn" id="drawerClose" aria-label="Close menu"><i class="ph ph-x"></i></button>
     </div>
@@ -1407,7 +1407,7 @@ function showPrompt(title, message, placeholder=''){
 
 /* ============ THEME / DRAWER / NAV ============ */
 function applyThemeIcon(){ const t = document.documentElement.getAttribute('data-theme'); const ic = document.getElementById('themeIcon'); if (ic) ic.className = t === 'dark' ? 'ph ph-sun' : 'ph ph-moon' }
-function toggleTheme(){ const cur = document.documentElement.getAttribute('data-theme') || 'light'; const nxt = cur === 'light' ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', nxt); try { localStorage.setItem('fud-theme', nxt) } catch(e){}; applyThemeIcon() }
+function toggleTheme(){ const cur = document.documentElement.getAttribute('data-theme') || 'light'; const nxt = cur === 'light' ? 'dark' : 'light'; document.documentElement.setAttribute('data-theme', nxt); try { localStorage.setItem('atbu-theme', nxt) } catch(e){}; applyThemeIcon() }
 function openDrawer(){ document.getElementById('drawer').classList.add('open'); document.getElementById('drawerBackdrop').classList.add('open'); document.body.style.overflow='hidden' }
 function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); document.getElementById('drawerBackdrop').classList.remove('open'); document.body.style.overflow='' }
 function initMedBg(){
@@ -1491,7 +1491,7 @@ function setupIslandProfile(fullName){
   const profileEl = document.getElementById('islandProfile')
   if (profileEl) wireIslandTooltip(profileEl, fullName ? ('Dr. ' + fullName) : 'Doctor')
   const footerEl = document.getElementById('islandFooter')
-  if (footerEl) wireIslandTooltip(footerEl, 'Team Tech Fusion — FUD')
+  if (footerEl) wireIslandTooltip(footerEl, 'Team Tech Fusion — ATBU')
 }
 function switchTab(tabName){
   // TASK 3: highlight both mobile/drawer (.nav-item) and desktop island (.island-nav-item) nav elements

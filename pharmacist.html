@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>FUD SmartCare — Pharmacist Dashboard</title>
+<title>ATBU MediCare — Pharmacist Dashboard</title>
 <script>
   (function(){
     try {
-      var t = localStorage.getItem('fud-theme') || 'light';
+      var t = localStorage.getItem('atbu-theme') || 'light';
       document.documentElement.setAttribute('data-theme', t);
     } catch(e) {}
   })();
@@ -21,34 +21,34 @@
 <style>
 
 :root{
-  --primary:#1A5C2A; --primary-mid:#217A38; --primary-light:#3DA854;
-  --accent-green:#1A5C2A; --accent-gold:#3DA854;
-  --bg:#F2F7F2; --panel-bg:#FFFFFF; --neu-bg:#FFFFFF;
+  --primary:#1E7FB8; --primary-mid:#2C97D6; --primary-light:#5CB8E4;
+  --accent-green:#1E8449; --accent-gold:#F4C430;
+  --bg:#F0F9FD; --panel-bg:#FFFFFF; --neu-bg:#FFFFFF;
   --neu-shadow-d:#c9e4f0; --neu-shadow-l:#ffffff;
   --text:#0F172A; --text-muted:#64748B;
   --input-bg:#FFFFFF; --input-border:#CBD5E1; --input-bg-err:#FEF2F2;
   --card-border:rgba(255,255,255,0.80); --card-border-solid:#CBD5E1;
   --success:#1E8449; --error:#EF4444; --warning:#F59E0B; --info:#2563EB; --white:#FFFFFF;
-  --shadow-rgb:26,92,42;
+  --shadow-rgb:30,127,184;
   --radius-card:20px; --radius-input:12px; --radius-btn:10px;
-  --overlay-grad:linear-gradient(150deg,#5DC872 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#3DA854 0%,#217A38 55%,#1A5C2A 100%);
+  --overlay-grad:linear-gradient(150deg,#2C97D6 0%,#1E7FB8 100%);
+  --brand-grad:linear-gradient(135deg,#2C97D6 0%,#1E7FB8 100%);
   --content-max:1200px;
-  --med-icon:rgba(26,92,42,0.10);
+  --med-icon:rgba(30,127,184,0.10);
 }
 [data-theme="dark"]{
-  --primary:#3DA854; --primary-mid:#217A38; --primary-light:#5FC977;
-  --accent-green:#2FA05E; --accent-gold:#3DA854;
-  --bg:#0D1F10; --panel-bg:#112916; --neu-bg:#12242E;
-  --neu-shadow-d:#070F08; --neu-shadow-l:#1A3D1F;
-  --text:#E8F5EA; --text-muted:#82A889;
-  --input-bg:#102530; --input-border:#1E4025; --input-bg-err:#2A1018;
-  --card-border:rgba(93,201,119,0.22); --card-border-solid:#1E4025;
+  --primary:#5CB8E4; --primary-mid:#2C97D6; --primary-light:#8ECFEE;
+  --accent-green:#2FA05E; --accent-gold:#F4C430;
+  --bg:#0E1A22; --panel-bg:#142833; --neu-bg:#12242E;
+  --neu-shadow-d:#081117; --neu-shadow-l:#1E3A48;
+  --text:#EAF6FB; --text-muted:#8FB3C3;
+  --input-bg:#102530; --input-border:#28455A; --input-bg-err:#2A1018;
+  --card-border:rgba(92,184,228,0.22); --card-border-solid:#28455A;
   --success:#2FA05E; --error:#F87171; --warning:#FBBF24; --info:#60A5FA; --white:#EAF6FB;
-  --shadow-rgb:26,92,42;
-  --overlay-grad:linear-gradient(150deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --med-icon:rgba(26,92,42,0.14);
+  --shadow-rgb:92,184,228;
+  --overlay-grad:linear-gradient(150deg,#5CB8E4 0%,#1E7FB8 100%);
+  --brand-grad:linear-gradient(135deg,#5CB8E4 0%,#1E7FB8 100%);
+  --med-icon:rgba(92,184,228,0.14);
   --stat-amber:#FBBF24; --stat-blue:#60A5FA;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-user-select:none;user-select:none}
@@ -57,7 +57,7 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 html,body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;min-height:100vh;transition:background 250ms ease,color 250ms ease}
 body{overflow-x:hidden;overscroll-behavior-y:none}
 .blob{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
-.blob1{width:500px;height:500px;background:rgba(26,92,42,0.12);top:-150px;left:-150px;animation:blobDrift1 22s ease-in-out infinite alternate}
+.blob1{width:500px;height:500px;background:rgba(16,185,129,0.12);top:-150px;left:-150px;animation:blobDrift1 22s ease-in-out infinite alternate}
 .blob2{width:420px;height:420px;background:rgba(var(--shadow-rgb),0.10);bottom:-120px;right:-120px;filter:blur(80px);animation:blobDrift2 18s ease-in-out infinite alternate}
 @keyframes blobDrift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(120px,80px) scale(1.15)}}
 @keyframes blobDrift2{0%{transform:translate(0,0) scale(1.1)}100%{transform:translate(-100px,-60px) scale(1)}}
@@ -210,7 +210,7 @@ body{overflow-x:hidden;overscroll-behavior-y:none}
   opacity:0; transform:translate(-6px,-50%) scale(.96); transition:opacity 160ms ease, transform 160ms ease;
 }
 #islandTooltip.show{ opacity:1; transform:translate(0,-50%) scale(1) }
-#islandTooltip::before{ content:''; position:absolute; left:-5px; top:50%; transform:translateY(-50%); border-width:5px 6px 5px 0; border-style:solid; border-color:transparent #1A5C2A transparent transparent }
+#islandTooltip::before{ content:''; position:absolute; left:-5px; top:50%; transform:translateY(-50%); border-width:5px 6px 5px 0; border-style:solid; border-color:transparent #1E7FB8 transparent transparent }
 [data-theme="dark"] #islandTooltip::before{ border-right-color:#0F766E }
 @media (prefers-reduced-motion:reduce){
   #islandTooltip{ transition:none }
@@ -243,7 +243,7 @@ body{overflow-x:hidden;overscroll-behavior-y:none}
 .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand-grad);opacity:.35;transition:opacity 220ms ease}
 .stat-card:hover{transform:translateY(-5px) scale(1.015);box-shadow:0 8px 16px rgba(0,0,0,0.06),0 18px 38px rgba(var(--shadow-rgb),0.18);border-color:rgba(var(--shadow-rgb),0.35)}
 .stat-card:hover::before{opacity:1}
-.stat-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(26,92,42,0.15),rgba(61,168,84,0.10));border:1px solid rgba(var(--shadow-rgb),0.15);color:var(--primary);font-size:22px;flex-shrink:0;transition:transform 260ms cubic-bezier(0.34,1.56,0.64,1)}
+.stat-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(13,107,78,0.10));border:1px solid rgba(var(--shadow-rgb),0.15);color:var(--primary);font-size:22px;flex-shrink:0;transition:transform 260ms cubic-bezier(0.34,1.56,0.64,1)}
 .stat-card:hover .stat-icon{transform:scale(1.1) rotate(-6deg)}
 .stat-icon.amber{background:linear-gradient(135deg,rgba(245,158,11,0.18),rgba(245,158,11,0.08));border-color:rgba(245,158,11,0.25);color:var(--stat-amber,#F59E0B)}
 .stat-icon.blue{background:linear-gradient(135deg,rgba(37,99,235,0.15),rgba(37,99,235,0.08));border-color:rgba(37,99,235,0.25);color:var(--stat-blue,#2563EB)}
@@ -588,7 +588,7 @@ body.drawer-open .fab{display:none !important}
 
 
 /* Profile banner + accordion */
-.profile-banner{background:linear-gradient(135deg,rgba(26,92,42,0.14),rgba(61,168,84,0.08));border:1.5px solid var(--card-border-solid);border-radius:var(--radius-card);padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;margin-bottom:20px;box-shadow:0 4px 14px rgba(var(--shadow-rgb),0.10)}
+.profile-banner{background:linear-gradient(135deg,rgba(16,185,129,0.14),rgba(13,107,78,0.08));border:1.5px solid var(--card-border-solid);border-radius:var(--radius-card);padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;margin-bottom:20px;box-shadow:0 4px 14px rgba(var(--shadow-rgb),0.10)}
 .pb-avatar{width:88px;height:88px;border-radius:50%;background:var(--brand-grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;box-shadow:0 6px 18px rgba(var(--shadow-rgb),0.30);flex-shrink:0}
 .pb-name{font-size:20px;font-weight:800;color:var(--text);margin-top:14px}
 .pb-email{font-size:13px;color:var(--text-muted);margin-top:4px;word-break:break-all}
@@ -786,7 +786,7 @@ body.drawer-open .fab{display:none !important}
 <div class="med-bg" id="medBg"></div>
 
 <div id="authScreen">
-  <div class="auth-logo-pulse" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;overflow:hidden"><img src="logo.png" alt="FUD SmartCare" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div class="auth-logo-pulse" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;overflow:hidden"><img style="width:100%;height:100%;object-fit:contain;display:block" src="logo.png" alt="ATBU"/></div>
   <div>Verifying session…</div>
 </div>
 
@@ -795,9 +795,9 @@ body.drawer-open .fab{display:none !important}
   <div class="topbar-shell">
     <div class="topbar">
       <div class="brand">
-        <div class="brand-icon"><img src="logo.png" alt="FUD SmartCare"/></div>
+        <div class="brand-icon"><img src="logo.png" alt="ATBU"/></div>
         <div>
-          <div class="brand-name">FUD SmartCare</div>
+          <div class="brand-name">ATBU MediCare</div>
         </div>
       </div>
       <div class="top-right">
@@ -828,8 +828,8 @@ body.drawer-open .fab{display:none !important}
     <div class="island-footer" id="islandFooter" tabindex="0">
       <div class="island-footer-glyph"><i class="ph-fill ph-users-three"></i></div>
       <div class="island-footer-lines island-label">
-        <div>Group 14</div>
-        <div>FUD</div>
+        <div>Team Tech Fusion</div>
+        <div>ATBU</div>
       </div>
     </div>
   </aside>
@@ -838,8 +838,8 @@ body.drawer-open .fab{display:none !important}
   <aside class="drawer" id="drawer">
     <div class="drawer-head">
       <div class="brand">
-        <div class="brand-icon"><img src="logo.png" alt="FUD SmartCare"/></div>
-        <div><div class="brand-name">FUD SmartCare</div><div class="brand-kicker">Dashboard</div></div>
+        <div class="brand-icon"><img src="logo.png" alt="ATBU"/></div>
+        <div><div class="brand-name">ATBU MediCare</div><div class="brand-kicker">Dashboard</div></div>
       </div>
       <button class="icon-btn" id="drawerCloseBtn" aria-label="Close menu"><i class="ph ph-x"></i></button>
     </div>
@@ -1092,7 +1092,7 @@ body.drawer-open .fab{display:none !important}
 <div class="modal-backdrop" id="changePasswordScreen" style="display:none">
   <div class="modal-card">
     <div class="modal-branded-head">
-      <div class="brand-icon"><img src="logo.png" alt="FUD SmartCare"/></div>
+      <div class="brand-icon"><img src="logo.png" alt="ATBU"/></div>
       <div><h3>Set a New Password</h3><p>For security, please change your temporary password.</p></div>
     </div>
     <div class="form-field" style="margin-bottom:12px">
@@ -1302,7 +1302,7 @@ function setupIslandProfile(fullName){
   const profileEl = document.getElementById('islandProfile')
   if (profileEl) wireIslandTooltip(profileEl, fullName || 'Pharmacist')
   const footerEl = document.getElementById('islandFooter')
-  if (footerEl) wireIslandTooltip(footerEl, 'Group 14 — FUD')
+  if (footerEl) wireIslandTooltip(footerEl, 'Team Tech Fusion — ATBU')
 }
 
 function switchTab(tabName){
@@ -1319,7 +1319,7 @@ function switchTab(tabName){
     case 'dispensed': loadDispensed(); break
     case 'profile': loadProfile(); break
   }
-  try { localStorage.setItem('fud-pharmacist-active-tab', tabName) } catch(e){}
+  try { localStorage.setItem('atbu-pharmacist-active-tab', tabName) } catch(e){}
 }
 
 /* =============== DRAWER =============== */
@@ -1331,7 +1331,7 @@ function toggleTheme(){
   const cur = document.documentElement.getAttribute('data-theme') || 'light'
   const next = cur === 'dark' ? 'light' : 'dark'
   document.documentElement.setAttribute('data-theme', next)
-  try { localStorage.setItem('fud-theme', next) } catch(e){}
+  try { localStorage.setItem('atbu-theme', next) } catch(e){}
   const ic = document.querySelector('#themeBtn i')
   if (ic) ic.className = next === 'dark' ? 'ph ph-sun' : 'ph ph-moon'
 }
@@ -1400,7 +1400,7 @@ function showDashboard(){
   renderNav()
   updateMainTopOffset()
   let savedTab = 'dashboard'
-  try { savedTab = localStorage.getItem('fud-pharmacist-active-tab') || 'dashboard' } catch(e){}
+  try { savedTab = localStorage.getItem('atbu-pharmacist-active-tab') || 'dashboard' } catch(e){}
   if (!document.getElementById('page-'+savedTab)) savedTab = 'dashboard'
   switchTab(savedTab)
 }

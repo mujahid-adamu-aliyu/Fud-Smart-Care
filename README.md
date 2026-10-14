@@ -1,54 +1,49 @@
-# FUD Health Centre — Hospital Management System
+# ATBU MediCare
 
-Role-based web app for FUD Health Centre: appointment booking, prescriptions, payments, staff, and pharmacy stock management — backed by Supabase.
+A Supabase-backed healthcare management web application for Abubakar Tafawa Balewa University (ATBU), built by Team Tech Fusion for the 2026 Interdisciplinary Knowledge and Innovation Summit. The app supports patient appointments, prescriptions and payments, alongside staff, roster and pharmacy-stock workflows.
 
----
+## Application Files
 
-## Files
+| File | Purpose |
+|---|---|
+| `index.html` | Public landing page, patient registration, sign-in and role-based redirect |
+| `admin.html` | Manage doctors and pharmacists, roster shifts, appointments, payments, patients and stock overview |
+| `doctor.html` | Doctor dashboard, roster, appointment queue and history, patient lookup, consultations and prescriptions |
+| `patient.html` | Patient dashboard, appointment booking, prescriptions, payments and profile/medical records |
+| `pharmacist.html` | Pharmacy stock management and prescription dispensing workflow |
+| `confirm.html` | Supabase email confirmation flow |
+| `reset-password.html` | Password recovery and password update flow |
 
-| File | Role | Purpose |
-|---|---|---|
-| `index.html` | **Public / Auth** | Landing page, login, patient sign-up, Google OAuth (patients), forgot password, role-based redirect |
-| `admin.html` | **Administrator** | Staff management, roster scheduling, payment verification, appointments, patients, drug stock overview |
-| `doctor.html` | **Doctor** | Roster view, appointment queue (pending/upcoming/history), patient list, consultations |
-| `patient.html` | **Patient** | Book appointments, view prescriptions, make payments, manage profile |
-| `pharmacist.html` | **Pharmacist** | Drug stock management, prescription queue (Awaiting → Ready → Dispensed) |
+## Supporting Files
 
----
+- `logo.png`, `fud-logo.png`, `og-image.png`: brand and social-preview images. `fud-logo.png` is a legacy-named asset retained in this snapshot.
+- `makama.png`, `mujahid.png`, `amina.png`, `alamin.png`, `buhari.png`, `faruq.png`: Team Tech Fusion profile images used by the landing page.
+- `wrangler.jsonc`: Cloudflare Wrangler static-assets configuration; it serves the repository root as assets under the worker name `fud-hms`.
+- `LICENSE`: Apache License 2.0.
 
-## Key Features
+## Technology
 
-**Landing / Auth (`index.html`)**
-- Marketing-style hero + login/sign-up modals
-- Patient self-registration; staff accounts created by admin only
-- Google Sign-In restricted to patients (non-patients get bounced back with an error toast)
-- Forgot password via Supabase Edge Function → `reset-password.html`
-- Enter-key field navigation, inline validation, toast notifications
+- Static HTML, CSS and JavaScript. There is no application build step or package manifest in this repository.
+- Supabase Auth and Postgres, accessed by the browser using `@supabase/supabase-js`.
+- Phosphor icons and Poppins font are loaded from external CDNs.
+- Light and dark themes are stored in browser `localStorage` under ATBU-specific keys.
 
-**Admin**
-- Create/manage doctor & pharmacist accounts with shareable credential cards
-- Roster scheduling + bulk-cancel empty shifts
-- Payment verification queue (pending → paid/rejected)
-- Dashboard stats: active doctors, pharmacists, patients, pending verifications, low stock
+## Run Locally
 
-**Doctor**
-- Personal roster, appointment pipeline, patient history access, consultation notes
+Open `index.html` through a local static web server. For example, from this directory:
 
-**Patient**
-- Appointment booking/tracking, prescriptions, payments (₦), profile & password management
+```sh
+python3 -m http.server 8000
+```
 
-**Pharmacist**
-- Stock levels with reorder threshold flags, prescription fulfillment pipeline
+Then open <http://localhost:8000>. Authentication and data features require the configured Supabase project and network access; the UI is not a standalone offline app.
 
----
+## Deploy with Cloudflare
 
-## Tech Stack
+The included Wrangler configuration serves the repository root as static assets. With Wrangler installed and authenticated, deploy from this directory using:
 
-- **Frontend:** Static single-file HTML/CSS/JS per screen — no build step, no bundler
-- **Backend:** Supabase (Postgres + Auth + Edge Functions)
-- **Icons:** Phosphor Icons (`@phosphor-icons/web`)
-- **Font:** Poppins (Google Fonts)
-- **Theming:** Light/dark mode, persisted via `localStorage`, driven by CSS custom properties
+```sh
+npx wrangler deploy
+```
 
-```js
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+The repository does not include database migrations, Supabase Edge Function source, or a package manifest. Database tables, policies, RPCs, and Edge Functions used by the pages must already be configured in Supabase. Do not place Supabase service-role keys in browser code; the frontend uses the project's anon key.

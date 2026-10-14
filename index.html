@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-<title>FUD SmartCare — Smart Healthcare for the FUD Community</title>
-<meta property="og:title" content="FUD SmartCare — Smart Healthcare for the FUD Community" />
-<meta property="og:description" content="FUD SmartCare — smart, connected healthcare for Federal University Dutse. Manage appointments, prescriptions, and patient care online." />
+<title>ATBU MediCare — Smart Healthcare for a Smarter Campus</title>
+<meta property="og:title" content="ATBU MediCare — Smart Healthcare for a Smarter Campus" />
+<meta property="og:description" content="Team Tech Fusion — smart healthcare for a smarter campus. Manage appointments, prescriptions, and patient care online." />
 <meta property="og:image" content="og-image.png" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="FUD SmartCare — Smart Healthcare for the FUD Community" />
-<meta name="twitter:description" content="FUD SmartCare — smart, connected healthcare for Federal University Dutse. Manage appointments, prescriptions, and patient care online." />
+<meta name="twitter:title" content="ATBU MediCare — Smart Healthcare for a Smarter Campus" />
+<meta name="twitter:description" content="Team Tech Fusion — smart healthcare for a smarter campus. Manage appointments, prescriptions, and patient care online." />
 <meta name="twitter:image" content="og-image.png" />
 <link rel="icon" type="image/png" href="logo.png" />
 <script>
   (function () {
     try {
-      var t = localStorage.getItem("fud-theme") || "light";
+      var t = localStorage.getItem("atbu-theme") || "light";
       document.documentElement.setAttribute("data-theme", t);
     } catch (e) {}
   })();
@@ -28,37 +28,37 @@
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <style>
 :root{
-  --primary:#1A5C2A;--primary-mid:#217A38;--primary-light:#3DA854;
-  --accent-green:#1A5C2A;--accent-gold:#3DA854;
-  --bg:#F2F7F2;--panel-bg:#FFFFFF;
-  --neu-shadow-d:#c2dac6;--neu-shadow-l:#ffffff;
-  --text:#0F172A;--text-muted:#4B5563;
+  --primary:#1E7FB8;--primary-mid:#2C97D6;--primary-light:#5CB8E4;
+  --accent-green:#1E8449;--accent-gold:#F4C430;
+  --bg:#F0F9FD;--panel-bg:#FFFFFF;
+  --neu-shadow-d:#c6e2ed;--neu-shadow-l:#ffffff;
+  --text:#0F172A;--text-muted:#64748B;
   --input-bg:#FFFFFF;--input-border:#CBD5E1;--input-bg-err:#FEF2F2;
-  --card-border:rgba(26,92,42,0.18);
-  --ui-border:rgba(26,92,42,0.18);
-  --success:#1A5C2A;--error:#EF4444;--info:#217A38;--white:#FFFFFF;
-  --shadow-rgb:26,92,42;
+  --card-border:rgba(15,23,42,0.18);
+  --ui-border:rgba(15,23,42,0.18);
+  --success:#1E8449;--error:#EF4444;--info:#2563EB;--white:#FFFFFF;
+  --shadow-rgb:30,127,184;
   --radius-card:14px;--radius-input:10px;--radius-btn:10px;
-  --overlay-grad:linear-gradient(150deg,#5DC872 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#3DA854 0%,#217A38 55%,#1A5C2A 100%);
-  --footer-bg:#0F3D18;
-  --med-icon:rgba(26,92,42,0.22);
+  --overlay-grad:linear-gradient(150deg,#5CB8E4 0%,#1E7FB8 55%,#1E8449 100%);
+  --brand-grad:linear-gradient(135deg,#2C97D6 0%,#1E7FB8 55%,#1E8449 100%);
+  --footer-bg:#14547A;
+  --med-icon:rgba(30,127,184,0.22);
 }
 [data-theme="dark"]{
-  --primary:#3DA854;--primary-mid:#217A38;--primary-light:#5FC977;
-  --accent-green:#3DA854;--accent-gold:#5DC872;
-  --bg:#0D1F10;--panel-bg:#112916;--neu-bg:#0D1F10;
-  --neu-shadow-d:#070F08;--neu-shadow-l:#1A3D1F;
-  --text:#E8F5EA;--text-muted:#82A889;
-  --input-bg:#0D1F10;--input-border:#1E4025;--input-bg-err:#2A1018;
-  --card-border:rgba(93,201,119,0.22);
-  --ui-border:rgba(93,201,119,0.22);
-  --success:#3DA854;--error:#F87171;--info:#5FC977;--white:#E8F5EA;
-  --shadow-rgb:26,92,42;
-  --overlay-grad:linear-gradient(150deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --brand-grad:linear-gradient(135deg,#5FC977 0%,#217A38 55%,#1A5C2A 100%);
-  --footer-bg:#070F08;
-  --med-icon:rgba(61,168,84,0.14);
+  --primary:#5CB8E4;--primary-mid:#2C97D6;--primary-light:#8FD3F5;
+  --accent-green:#3FB871;--accent-gold:#F4C430;
+  --bg:#0E1A22;--panel-bg:#142833;--neu-bg:#12242E;
+  --neu-shadow-d:#081117;--neu-shadow-l:#1E3A48;
+  --text:#EAF6FB;--text-muted:#8FB3C3;
+  --input-bg:#102028;--input-border:#28455A;--input-bg-err:#2A1018;
+  --card-border:rgba(140,211,245,0.22);
+  --ui-border:rgba(140,211,245,0.22);
+  --success:#3FB871;--error:#F87171;--info:#60A5FA;--white:#EAF6FB;
+  --shadow-rgb:92,184,228;
+  --overlay-grad:linear-gradient(150deg,#8FD3F5 0%,#2C97D6 55%,#3FB871 100%);
+  --brand-grad:linear-gradient(135deg,#5CB8E4 0%,#2C97D6 55%,#3FB871 100%);
+  --footer-bg:#0A1F2C;
+  --med-icon:rgba(92,184,228,0.14);
 }
 *{box-sizing:border-box;margin:0;padding:0;user-select:none;-webkit-user-select:none}
 *:focus{outline:none}
@@ -84,10 +84,10 @@ input,select,textarea{font-family:inherit}
 
 /* Blobs */
 .blob{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
-.blob.b1{width:500px;height:500px;background:rgba(26,92,42,0.12);top:-120px;left:-120px;animation:blobDrift1 22s infinite alternate ease-in-out}
-.blob.b2{width:420px;height:420px;background:rgba(26,92,42,0.10);bottom:-100px;right:-80px;filter:blur(80px);animation:blobDrift2 18s infinite alternate ease-in-out}
-[data-theme="dark"] .blob.b1{background:rgba(61,168,84,0.10)}
-[data-theme="dark"] .blob.b2{background:rgba(61,168,84,0.08)}
+.blob.b1{width:500px;height:500px;background:rgba(16,185,129,0.12);top:-120px;left:-120px;animation:blobDrift1 22s infinite alternate ease-in-out}
+.blob.b2{width:420px;height:420px;background:rgba(13,107,78,0.10);bottom:-100px;right:-80px;filter:blur(80px);animation:blobDrift2 18s infinite alternate ease-in-out}
+[data-theme="dark"] .blob.b1{background:rgba(45,212,191,0.10)}
+[data-theme="dark"] .blob.b2{background:rgba(45,212,191,0.08)}
 @keyframes blobDrift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(80px,60px) scale(1.1)}}
 @keyframes blobDrift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-60px,-80px) scale(1.15)}}
 @media(max-width:640px){.blob.b1{width:280px;height:280px}.blob.b2{width:240px;height:240px}}
@@ -703,49 +703,7 @@ input,select,textarea{font-family:inherit}
   .toast .tt{font-size:0.84rem;}
 }
 .body-lock{overflow:hidden}
-  
-/* FUD SmartCare extras */
-.contrib-grid-2x2{grid-template-columns:repeat(2,1fr)!important;}
-@media(max-width:480px){.contrib-grid-2x2{grid-template-columns:1fr!important;}}
-
-.contrib-initials{
-  background:var(--brand-grad);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:1.2rem;letter-spacing:0.02em;
-  border-radius:50%;width:68px;height:68px;
-  margin:0 auto 14px;box-shadow:0 8px 20px rgba(var(--shadow-rgb),0.30);
-}
-
-.contrib-reg{
-  font-size:0.72rem;color:var(--text-muted);
-  margin-bottom:8px;letter-spacing:0.03em;
-}
-
-/* Team Lead standout card */
-.contrib-lead{
-  border:2px solid var(--primary-light)!important;
-  background:linear-gradient(145deg,var(--panel-bg) 60%,rgba(26,92,42,0.08))!important;
-  box-shadow:0 12px 36px rgba(26,92,42,0.22)!important;
-  position:relative;
-}
-.contrib-lead::before{
-  background:linear-gradient(135deg,var(--primary) 0%,var(--accent-gold) 100%)!important;
-}
-.contrib-lead .contrib-initials{
-  width:80px!important;height:80px!important;font-size:1.5rem!important;
-  box-shadow:0 10px 28px rgba(26,92,42,0.40)!important;
-}
-.lead-badge{
-  position:absolute;top:14px;right:14px;
-  display:inline-flex;align-items:center;gap:5px;
-  background:linear-gradient(135deg,var(--primary-mid),var(--primary-light));
-  color:#fff;font-size:0.7rem;font-weight:700;
-  padding:4px 10px;border-radius:20px;
-  box-shadow:0 4px 12px rgba(26,92,42,0.35);
-  letter-spacing:0.04em;
-}
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -758,9 +716,9 @@ input,select,textarea{font-family:inherit}
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brand">
-      <div class="brand-icon" style="background:none;box-shadow:none;padding:0;border:none;"><img src="logo.png" alt="FUD SmartCare Logo" style="width:38px;height:38px;object-fit:contain;display:block;"/></div>
+      <div class="brand-icon" style="background:none;box-shadow:none;padding:0;border:none;"><img src="logo.png" alt="ATBU MediCare Logo" style="width:38px;height:38px;object-fit:contain;display:block;"/></div>
       <div class="brand-text">
-        <div class="name">FUD <span class="brand-medi">Smart</span><span class="brand-care">Care</span></div>
+        <div class="name">ATBU <span class="brand-medi">Medi</span><span class="brand-care">Care</span></div>
       </div>
     </div>
     <nav class="topbar-nav" id="topbarNav">
@@ -786,9 +744,9 @@ input,select,textarea{font-family:inherit}
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-left reveal">
-        <span class="hero-label solid"><i class="ph-fill ph-hospital"></i> FUD Health Centre</span>
+        <span class="hero-label solid"><i class="ph-fill ph-hospital"></i> Team Tech Fusion</span>
         <h1 class="hero-title">Your Health,<br><span class="grad">Our Priority</span></h1>
-        <p class="hero-sub">FUD SmartCare brings smart, connected healthcare to the Federal University Dutse community — developed as a Group Assignment for FUD-CIT 210: System Analysis and Design.</p>
+        <p class="hero-sub">ATBU MediCare brings smart, connected healthcare to the ATBU community — built for the 2026 Interdisciplinary Knowledge and Innovation Summit. Smart Healthcare for a Smarter Campus.</p>
         <div class="cta-cluster">
           <button class="btn btn-primary" data-open="signup">
             <i class="ph ph-user-plus btn-icon"></i><span class="btn-text">Create Account</span><span class="btn-dots"><span></span><span></span><span></span></span>
@@ -823,7 +781,7 @@ input,select,textarea{font-family:inherit}
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Our Healthcare Services</h2>
-      <p>Comprehensive medical care for the entire FUD community</p>
+      <p>Comprehensive medical care for the entire ATBU community</p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal" style="--d:0ms"><div class="ic"><i class="ph-fill ph-first-aid"></i></div><h3>Emergency Department</h3><p>Immediate medical attention for urgent and critical cases.</p></div>
@@ -844,12 +802,12 @@ input,select,textarea{font-family:inherit}
       <p>An innovation-driven Hospital Management System</p>
     </div>
     <div class="about-card reveal">
-      <span class="hero-label solid nowrap"><i class="ph-fill ph-graduation-cap"></i> FUD-CIT 210</span>
+      <span class="hero-label solid nowrap"><i class="ph-fill ph-graduation-cap"></i> 2026 Innovation Summit</span>
       <div class="about-steps">
         <div class="about-step">
           <div class="ic"><i class="ph-fill ph-target"></i></div>
           <h4>Purpose</h4>
-          <p>This system is developed as a Group Assignment for FUD-CIT 210: System Analysis and Design, Department of Information Technology, Federal University Dutse.</p>
+          <p>Built by Team Tech Fusion for the 2026 Interdisciplinary Knowledge and Innovation Summit at ATBU Bauchi.</p>
         </div>
         <div class="about-step">
           <div class="ic"><i class="ph-fill ph-flow-arrow"></i></div>
@@ -871,34 +829,38 @@ input,select,textarea{font-family:inherit}
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Meet the Team</h2>
-      <p>Group 14 — Department of Cyber Security, FUD</p>
+      <p>Team Tech Fusion</p>
     </div>
-    <div class="contrib-grid contrib-grid-2x2">
-      <!-- Team Lead: Mujahid — standout card -->
-      <div class="contrib-card contrib-lead reveal" style="--d:0ms">
-        <div class="lead-badge"><i class="ph-fill ph-crown"></i> Team Lead</div>
-        <div class="contrib-avatar contrib-initials" style="width:80px;height:80px;font-size:1.5rem;">MA</div>
-        <div class="contrib-name">Mujahid Adamu Aliyu</div>
-        <div class="contrib-reg">FCP/CYB/24/1069</div>
-        <div class="contrib-role"><i class="ph-fill ph-database"></i> Database & Cybersecurity Lead</div>
+    <div class="contrib-grid">
+      <div class="contrib-card reveal" style="--d:0ms">
+        <div class="contrib-avatar contrib-avatar-img"><img src="makama.png" alt="Aliyu Auwal Makama"/></div>
+        <div class="contrib-name">Aliyu Auwal Makama</div>
+        <div class="contrib-role"><i class="ph-fill ph-crown"></i> CEO & Founder</div>
       </div>
       <div class="contrib-card reveal" style="--d:100ms">
-        <div class="contrib-avatar contrib-initials">AA</div>
-        <div class="contrib-name">Abdurrahman Aliyu Ibrahim</div>
-        <div class="contrib-reg">FCP/CYB/24/1068</div>
-        <div class="contrib-role"><i class="ph-fill ph-code"></i> Lead Developer</div>
+        <div class="contrib-avatar contrib-avatar-img"><img src="mujahid.png" alt="Mujahid Adamu Aliyu"/></div>
+        <div class="contrib-name">Mujahid Adamu Aliyu</div>
+        <div class="contrib-role"><i class="ph-fill ph-database"></i> Database & Cybersecurity Lead</div>
       </div>
       <div class="contrib-card reveal" style="--d:200ms">
-        <div class="contrib-avatar contrib-initials">HA</div>
-        <div class="contrib-name">Halima Ali Ali</div>
-        <div class="contrib-reg">FCP/CYB/24/1070</div>
+        <div class="contrib-avatar contrib-avatar-img"><img src="amina.png" alt="Aminat Ahmad Othman"/></div>
+        <div class="contrib-name">Aminat Ahmad Othman</div>
         <div class="contrib-role"><i class="ph-fill ph-paint-brush"></i> UI/UX Designer</div>
       </div>
       <div class="contrib-card reveal" style="--d:300ms">
-        <div class="contrib-avatar contrib-initials">HM</div>
-        <div class="contrib-name">Hafsat Mansur Shehu</div>
-        <div class="contrib-reg">FCP/CYB/24/1071</div>
+        <div class="contrib-avatar contrib-avatar-img"><img src="alamin.png" alt="Alamin Muhammad"/></div>
+        <div class="contrib-name">Alamin Muhammad</div>
         <div class="contrib-role"><i class="ph-fill ph-magic-wand"></i> Technical Architect</div>
+      </div>
+      <div class="contrib-card reveal" style="--d:400ms">
+        <div class="contrib-avatar contrib-avatar-img"><img src="buhari.png" alt="Buhari Shuaibu"/></div>
+        <div class="contrib-name">Buhari Shuaibu</div>
+        <div class="contrib-role"><i class="ph-fill ph-code"></i> Lead Developer</div>
+      </div>
+      <div class="contrib-card reveal" style="--d:500ms">
+        <div class="contrib-avatar contrib-avatar-img"><img src="faruq.png" alt="Farouq Abdulkadir Umar"/></div>
+        <div class="contrib-name">Farouq Abdulkadir Umar</div>
+        <div class="contrib-role"><i class="ph-fill ph-lightbulb"></i> Innovation Intern</div>
       </div>
     </div>
   </div>
@@ -910,10 +872,10 @@ input,select,textarea{font-family:inherit}
     <div class="footer-grid">
       <div class="f-col f-brand">
         <div class="brand">
-          <div class="brand-icon" style="background:none;box-shadow:none;padding:0;border:none;"><img src="logo.png" alt="FUD SmartCare Logo" style="width:44px;height:44px;object-fit:contain;display:block;"/></div>
-          <div class="brand-text"><div class="name">FUD <span class="brand-medi">Smart</span><span class="brand-care">Care</span></div><div class="sub">Federal University Dutse, Jigawa State</div></div>
+          <div class="brand-icon" style="background:none;box-shadow:none;padding:0;border:none;"><img src="logo.png" alt="ATBU MediCare Logo" style="width:44px;height:44px;object-fit:contain;display:block;"/></div>
+          <div class="brand-text"><div class="name">ATBU <span class="brand-medi">Medi</span><span class="brand-care">Care</span></div><div class="sub">Abubakar Tafawa Balewa Bauchi</div></div>
         </div>
-        <p class="f-mission">Providing quality healthcare to the Federal University Dutse community — smart care for a smarter campus.</p>
+        <p class="f-mission">Providing quality healthcare to the ATBU community since our establishment.</p>
         <div class="f-social">
           <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
           <a href="#" aria-label="Twitter"><i class="ph ph-twitter-logo"></i></a>
@@ -935,15 +897,15 @@ input,select,textarea{font-family:inherit}
       <div class="f-col">
         <h4>Contact Us</h4>
         <div class="f-contact">
-          <div class="ci"><i class="ph ph-map-pin"></i><span>Federal University Dutse, Dutse, Jigawa State, Nigeria</span></div>
+          <div class="ci"><i class="ph ph-map-pin"></i><span>Abubakar Tafawa Balewa University, Bauchi, Bauchi State, Nigeria</span></div>
           <div class="ci"><i class="ph ph-phone"></i><span>08109983057</span></div>
-          <div class="ci"><i class="ph ph-envelope"></i><span>fudhealthcenter@gmail.com</span></div>
+          <div class="ci"><i class="ph ph-envelope"></i><span>techfusion080@gmail.com</span></div>
           <div class="ci"><i class="ph ph-clock"></i><span>Mon – Fri: 8:00AM – 6:00PM</span></div>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 FUD SmartCare. All rights reserved.<br><span style="font-size:0.78rem;color:var(--text-muted);opacity:.85">Group 14 — FUD-CIT 210</span></div>
+      <div>© 2026 ATBU MediCare. All rights reserved.<br><span style="font-size:0.78rem;color:var(--text-muted);opacity:.85">Team Tech Fusion</span></div>
       <div class="links"><a href="#">Privacy Policy</a><span>·</span><a href="#">Terms of Use</a></div>
     </div>
   </div>
@@ -956,9 +918,9 @@ input,select,textarea{font-family:inherit}
 <aside class="drawer" id="drawer">
   <div class="drawer-head">
     <div class="drawer-brand">
-      <div class="brand-icon" style="background:none;box-shadow:none;padding:0;border:none;"><img src="logo.png" alt="FUD SmartCare Logo" style="width:38px;height:38px;object-fit:contain;display:block;"/></div>
+      <div class="brand-icon" style="background:none;box-shadow:none;padding:0;border:none;"><img src="logo.png" alt="ATBU MediCare Logo" style="width:38px;height:38px;object-fit:contain;display:block;"/></div>
       <div>
-        <div class="name">FUD <span class="brand-medi">Smart</span><span class="brand-care">Care</span></div>
+        <div class="name">ATBU <span class="brand-medi">Medi</span><span class="brand-care">Care</span></div>
       </div>
     </div>
     <button class="drawer-close" id="drawerClose"><i class="ph ph-x"></i></button>
@@ -971,7 +933,7 @@ input,select,textarea{font-family:inherit}
     <a href="#" data-open="signin"><i class="ph ph-sign-in"></i> Sign In</a>
     <a href="#" data-open="signup"><i class="ph ph-user-plus"></i> Sign Up</a>
   </nav>
-  <div class="drawer-footer">Group 14 · FUD SmartCare</div>
+  <div class="drawer-footer">Team Tech Fusion · ATBU MediCare</div>
 </aside>
 
 <!-- Modals backdrop -->
@@ -982,7 +944,7 @@ input,select,textarea{font-family:inherit}
   <div class="sheet-pill"></div>
   <div class="modal-head">
     <div class="ic"><i class="ph ph-user-plus"></i></div>
-    <div style="flex:1"><h3>Create Your Account</h3><p>Join FUD SmartCare</p></div>
+    <div style="flex:1"><h3>Create Your Account</h3><p>Join ATBU MediCare</p></div>
     <button type="button" class="modal-close" data-close aria-label="Close"><i class="ph ph-x"></i></button>
   </div>
   <form id="signupForm" autocomplete="on">
@@ -1023,7 +985,7 @@ input,select,textarea{font-family:inherit}
   <div class="sheet-pill"></div>
   <div class="modal-head">
     <div class="ic"><i class="ph ph-sign-in"></i></div>
-    <div style="flex:1"><h3>Sign In</h3><p>Welcome back to FUD SmartCare</p></div>
+    <div style="flex:1"><h3>Sign In</h3><p>Welcome back to ATBU MediCare</p></div>
     <button type="button" class="modal-close" data-close aria-label="Close"><i class="ph ph-x"></i></button>
   </div>
   <form id="signinForm" autocomplete="on">
@@ -1112,7 +1074,7 @@ themeBtn.addEventListener("click", () => {
   const cur = document.documentElement.getAttribute("data-theme") || "light";
   const next = cur === "dark" ? "light" : "dark";
   document.documentElement.setAttribute("data-theme", next);
-  try{localStorage.setItem("fud-theme", next)}catch(e){}
+  try{localStorage.setItem("atbu-theme", next)}catch(e){}
   applyThemeIcon();
 });
 

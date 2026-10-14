@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Confirm Account — FUD SmartCare</title>
+  <title>Confirm Account — ATBU MediCare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -11,11 +11,11 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <style>
     :root {
-      --primary:       #1A5C2A;
-      --primary-mid:   #217A38;
-      --primary-light: #3DA854;
+      --primary:       #1E7FB8;
+      --primary-mid:   #2C97D6;
+      --primary-light: #5CB8E4;
 
-      --bg:            #F2F7F2;
+      --bg:            #F0F9FD;
       --neu-bg:        #ffffff;
       --neu-shadow-d:  #c9e4f0;
       --neu-shadow-l:  #ffffff;
@@ -36,29 +36,29 @@
 
       --tf:  180ms ease;
       --tsp: 480ms cubic-bezier(0.34, 1.56, 0.64, 1);
-      --shadow-rgb: 26,92,42;
+      --shadow-rgb: 30,127,184;
     }
 
     [data-theme="dark"] {
-      --primary:       #3DA854;
-      --primary-mid:   #217A38;
-      --primary-light: #5FC977;
+      --primary:       #5CB8E4;
+      --primary-mid:   #2C97D6;
+      --primary-light: #8ECFEE;
 
-      --bg:            #0D1F10;
+      --bg:            #0E1A22;
       --neu-bg:        #12242E;
-      --neu-shadow-d:  #070F08;
-      --neu-shadow-l:  #1A3D1F;
-      --panel-bg:      #112916;
+      --neu-shadow-d:  #081117;
+      --neu-shadow-l:  #1E3A48;
+      --panel-bg:      #142833;
 
-      --text:          #E8F5EA;
-      --text-muted:    #82A889;
-      --input-border:  #1E4025;
-      --card-border:   rgba(93,201,119,0.22);
+      --text:          #EAF6FB;
+      --text-muted:    #8FB3C3;
+      --input-border:  #28455A;
+      --card-border:   rgba(92,184,228,0.22);
 
       --error:         #f87171;
       --success:       #2FA05E;
       --white:         #EAF6FB;
-      --shadow-rgb: 26,92,42;
+      --shadow-rgb: 92,184,228;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -303,8 +303,8 @@
 <div class="topbar-shell">
   <div class="topbar">
     <div class="topbar-brand">
-      <div class="topbar-brand-icon"><img src="logo.png" alt="FUD SmartCare Logo"/></div>
-      <div class="topbar-brand-name">FUD SmartCare</div>
+      <div class="topbar-brand-icon"><img src="logo.png" alt="ATBU Logo"/></div>
+      <div class="topbar-brand-name">ATBU MediCare</div>
     </div>
   </div>
 </div>
@@ -321,7 +321,7 @@
       <i class="ph-fill ph-envelope-simple-open" aria-hidden="true"></i>
     </div>
     <h1 class="state-heading">Confirm Your Account</h1>
-    <p class="state-sub">Click the button below to verify your email and activate your FUD SmartCare account.</p>
+    <p class="state-sub">Click the button below to verify your email and activate your ATBU MediCare account.</p>
     <div id="emailPillWrap"></div>
     <div class="btn-group">
       <button class="btn" id="btnConfirm">
@@ -341,10 +341,10 @@
       <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
     </div>
     <h1 class="state-heading">Account Confirmed Successfully</h1>
-    <p class="state-sub">Your FUD SmartCare account is now active.</p>
+    <p class="state-sub">Your ATBU MediCare account is now active.</p>
     <p class="state-sub">You can sign in with your email and password.</p>
     <div class="btn-group">
-      <a href="https://fud-smart-care.mjweb.workers.dev/index.html" class="btn">
+      <a href="https://atbu-medi-care.vercel.app/index.html" class="btn">
         <i class="ph-fill ph-sign-in" aria-hidden="true" style="font-size:1.1rem;"></i>
         Continue to Login
       </a>
@@ -363,7 +363,7 @@
         <i class="ph-fill ph-arrow-clockwise" aria-hidden="true" style="font-size:1.1rem;"></i>
         Retry
       </button>
-      <a href="https://fud-smart-care.mjweb.workers.dev/index.html" class="btn ghost">
+      <a href="https://atbu-medi-care.vercel.app/index.html" class="btn ghost">
         <i class="ph ph-arrow-left" aria-hidden="true" style="font-size:1.1rem;"></i>
         Back to Login
       </a>
@@ -376,7 +376,7 @@
   /* ── Supabase ── */
   const SUPABASE_URL      = "https://qseuseqkzvnlqsartkoq.supabase.co";
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzZXVzZXFrenZubHFzYXJ0a29xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MjcwMTcsImV4cCI6MjA5OTIwMzAxN30.49UXm0BhbHy6oEAYRTJjddiRB3VsrVg-jkgmAa2fEH4";
-  const LOGIN_URL = "https://fud-smart-care.mjweb.workers.dev/index.html";
+  const LOGIN_URL = "https://atbu-medi-care.vercel.app/index.html";
 
   const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     auth: { detectSessionInUrl: false, persistSession: false, autoRefreshToken: false }
